@@ -47,6 +47,8 @@ The "data" folder contains the two raw csvs and the "process_data.py" python cod
 
 The "models" folder contains the python code that trains the classifier. It will also contain the pickle classifier when the code is run- it is too large to upload to GitHub
 
+The two notebook files are our data exploration files.
+
 ## Processing<a name="processing"></a>
 
 In order to run the code, navigate the correct workplace in the terminal.
