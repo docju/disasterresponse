@@ -20,6 +20,13 @@ from pandas import DataFrame
 app = Flask(__name__)
 
 def tokenize(text):
+    """
+    INPUT:
+    X- containing messages
+    OUTPUT:
+    Tokenized and Lemmatized data without stopwords and punctuation
+    
+    """
     url_regex = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
     detected_urls=re.findall(url_regex,text)
     for character in string.punctuation:
@@ -49,28 +56,26 @@ model = joblib.load('./models/classifier.pkl')
 def index():
     
     # extract data needed for visuals
-    # TODO: Below is an example - modify to extract data for your own visuals
+    # Count Genres (this part provided by Udacity)
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
     topic_counts=[]
     topic_names=list(df.columns[4:])
     
-    
+    #Count the total number of messages assigned to each topic in the data
     for i in topic_names:
         col_sum=df[df[i]==1].count()['message']
         topic_counts.append(col_sum)
-    
+    #Count the total number of topics hit by each message
     df['total_topics']=0
     for j in topic_names:
        df['total_topics']=df['total_topics']+df[j]
     
     total_topics=list(df['total_topics'].unique()).sort()
     topic_numbers=df.groupby(['total_topics']).count()['message']
-  
-    #tokenized=vectorizer.fit_transform((df['message']))
-   # nlp_words=ntlk.Freqdist(tokenized)
+
     # create visuals
-    # TODO: Below is an example - modify to create your own visuals
+    # Count genres (provided by Udacity)
     graphs = [
         {
             'data': [
@@ -90,6 +95,7 @@ def index():
                 }
             }
         },
+    # Count messages per topic
         {
             'data': [
                 Bar(
@@ -108,7 +114,7 @@ def index():
                 }
             }
         },
-        
+      # Count topics per message and the number of messages assigned to that number of topics
         {
             'data': [
               #  Histogram(
