@@ -61,7 +61,7 @@ Run app/run.py to start the app
 
 Navigate to the webpage using the id and domain and input a message into the box, and it will return the classification.
 
-## Results<a name=results"></a>
+## Results<a name="results"></a>
 The final model is functional, but could perform better- one issue is that the "child_alone" category has no positive hits and so it is impossible to model on as it stands. All of the other categories have a good accuracy above 75% but some words such as "freezing" do not get assigned to obviously correct topics.
   
 The visualisations show that "related" is a popular topic but it is not clear what that means. Otherwise, they show that messages can be classified in to more than one topic, and this is quite common.
