@@ -73,7 +73,7 @@ def save_data(df, database_filename):
     df dataframe output as sql file
     
     '''
-    engine = create_engine('sqlite:///STOTAJO.db')
+    engine = create_engine('sqlite:///'+database_filename)
     #df.drop('MESSAGE_CATEGORIES',if_exists='replace',engine)
     df.to_sql('MESSAGE_CATEGORIES', engine,if_exists='replace', index=False)
     pass  
