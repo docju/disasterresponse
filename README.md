@@ -45,7 +45,7 @@ It also contains the main "run.py" code that runs the app.
 
 The "data" folder contains the two raw csvs and the "process_data.py" python code which loads the data.
 
-The "models" folder contains the python code that trains the classifier as well as the pickle file that is output from the classifier
+The "models" folder contains the python code that trains the classifier. It will also contain the pickle classifier when the code is run- it is too large to upload to GitHub
 
 ## Processing<a name="processing"></a>
 
