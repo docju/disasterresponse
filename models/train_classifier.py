@@ -38,8 +38,8 @@ def load_data(database_filepath):
     X (input) Y (target) files
     
     '''
-    engine = create_engine('sqlite:///STOTAJO.db')
-    df = pd.read_sql_table("MESSAGE_CATEGORIES", engine)
+    engine = create_engine('sqlite:///'+database_filepath)
+    df = pd.read_sql_table('MESSAGE_CATEGORIES', engine)
     print(df.head())
     X = df['message'].values
     Y = df[df.columns[4:]]
@@ -103,7 +103,7 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
-     '''
+    '''
     INPUT:
     model, test datasets, category names
     OUTPUT:
@@ -121,7 +121,7 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
-     '''
+    '''
     INPUT:
     model
     OUTPUT:
