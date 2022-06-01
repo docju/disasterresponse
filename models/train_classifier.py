@@ -103,7 +103,13 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+     '''
+    INPUT:
+    model, test datasets, category names
+    OUTPUT:
+    Classification report with precision, recall, f1 score
     
+    '''
     
     y_pred=model.predict(X_test)
 
@@ -115,10 +121,22 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
+     '''
+    INPUT:
+    model
+    OUTPUT:
+    Pickle model
+    
+    '''
     pickle.dump(model, open('classifier.pkl','wb'))
 
 
 def main():
+    '''
+    Put all of the above together
+    
+    ''' 
+   
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
